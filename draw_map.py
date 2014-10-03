@@ -12,11 +12,19 @@ COLOR_MAP = {
     '.': '#ffffff'
 }
 
+# The size of each tile
 SCALE = 16
 
+# Finds the picture coordinates of a tile given its i and j value
 def get_box_coordinates(i, j):
-    return (j*SCALE+1, i*SCALE+1, (j+1)*SCALE-1, (i+1)*SCALE-1)
+    return (
+        j*SCALE+1,
+        i*SCALE+1,
+        (j+1)*SCALE-1,
+        (i+1)*SCALE-1
+        )
 
+# Finds the picture coordinates of the path dots
 def get_route_coordinates(i, j):
     return (
         j*SCALE+(SCALE/2-3),
@@ -25,6 +33,7 @@ def get_route_coordinates(i, j):
         i*SCALE+(SCALE/2+3)
         )
 
+# Finds the picture coordinates of the visited nodes dots
 def get_visited_coordinates(i, j):
     return (
         j*SCALE+(SCALE/2-2),
@@ -35,6 +44,7 @@ def get_visited_coordinates(i, j):
 
 def draw_map(grid, filename, path=None, open_list=None, closed_list=None):
 
+    # Create black image in proper dimensions
     im = Image.new("RGB", (grid.width*SCALE, grid.height*SCALE))
 
     # Draw map

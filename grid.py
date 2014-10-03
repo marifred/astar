@@ -56,30 +56,30 @@ class Grid(object):
 
         self.nodes = nodes
 
-    def isWalkableAt(self, x, y):
-        return self.isInside(x, y) and self.nodes[x][y].walkable
+    def is_walkable_at(self, x, y):
+        return self.is_inside(x, y) and self.nodes[x][y].walkable
 
-    def isInside(self, x, y):
+    def is_inside(self, x, y):
         return 0 <= x < self.height and 0 <= y < self.width
 
-    def getNeightbors(self, node):
+    def get_neighbors(self, node):
         x = node.x
         y = node.y
-        neightbors = []
+        neighbors = []
 
-        if self.isWalkableAt(x, y-1):
-            neightbors.append(self.nodes[x][y-1])
+        if self.is_walkable_at(x, y-1):
+            neighbors.append(self.nodes[x][y-1])
 
-        if self.isWalkableAt(x, y+1):
-            neightbors.append(self.nodes[x][y+1])
+        if self.is_walkable_at(x, y+1):
+            neighbors.append(self.nodes[x][y+1])
 
-        if self.isWalkableAt(x-1, y):
-            neightbors.append(self.nodes[x-1][y])
+        if self.is_walkable_at(x-1, y):
+            neighbors.append(self.nodes[x-1][y])
 
-        if self.isWalkableAt(x+1, y):
-            neightbors.append(self.nodes[x+1][y])
+        if self.is_walkable_at(x+1, y):
+            neighbors.append(self.nodes[x+1][y])
 
-        return neightbors
+        return neighbors
 
     def h(self, node, goalNode):
         dx = abs(node.x - goalNode.x)

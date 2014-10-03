@@ -19,8 +19,8 @@ def find_path(grid, draw_all_steps=False, bfs=False, dijkstra=False):
 
     # Code to generate png for each step
     # if draw_all_steps:
-        # filename = "to_gif_1-1_%04d.png"
-        # filename_count = 1
+    #     filename = "to_gif_1-1_%04d.png"
+    #     filename_count = 1
 
     while(open_list):
         if bfs:
@@ -31,16 +31,16 @@ def find_path(grid, draw_all_steps=False, bfs=False, dijkstra=False):
 
         # Code to generate png for each step
         # if draw_all_steps:
-            # draw_map(grid, filename % filename_count, None, open_list, closed_list)
-            # filename_count += 1
+        #     draw_map(grid, filename % filename_count, None, open_list, closed_list)
+        #     filename_count += 1
 
         if (node == grid.goalNode):
             best_path = get_backtrace(node)
             return best_path, open_list, closed_list
 
-        neightbors = grid.getNeightbors(node)
+        neighbors = grid.get_neighbors(node)
 
-        for neighbor in neightbors:
+        for neighbor in neighbors:
             if neighbor in closed_list:
                 continue
 
@@ -53,7 +53,7 @@ def find_path(grid, draw_all_steps=False, bfs=False, dijkstra=False):
                     neighbor.h = 0
                 else:
                     neighbor.h = grid.h(neighbor, goalNode)
-                    
+
                 neighbor.parent = node
 
                 if neighbor not in open_list:
